@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="styles/css/main.min.css">
+<header>
+    <div class="navbar primary-nav" ng-init="navbarCollapsed=false">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="navbar-brand">
+                    <img src="images/omniseq.png" alt="" class="img-responsive"/>
+                </div>
+                <!-- /.navbar-brand -->
+                <button data-toggle="collapse" data-target="#menu" class="navbar-toggle burger-button {{!navbarCollapsed? 'showMenu' : ''}}" ng-click="navbarCollapsed=!navbarCollapsed">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- /.navbar-header -->
+            <div id="menu" class="collapse navbar-collapse" uib-collapse="navbarCollapsed">
+                <div class="primary-seperate clearfix">
+                    <!-- /.col-md-5 col-md-offset-1 -->
+                    <div class="user-info">
+                        <span class=" navbar-right navbar-text navbar-nav">
+                            <span uib-dropdown class="profile">
+                                <a uib-dropdown-toggle>
+                                    <span class="welcome-text">Welcome</span>
+                                    <span class="user-name-container">
+                                        <span class="user-name">{{user.firstName}}
+                                            {{user.lastName}}</span>
+                                    </span>
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" uib-dropdown-menu>
+                                    <li>
+                                        <a href ng-click="MainCtrl.changePassword()">Change Password</a>
+                                    </li>
+                                    <li>
+                                        <a href ng-click="MainCtrl.logout()">Logout</a>
+                                    </li>
+                                </ul>
+                            </span>
+                        </span>
+                    </div>
+                    <!-- /.user-info -->
+                </div>
+                <!-- /.primary-seperate -->
+                <!--
+                    <div class="clearfix hidden-xs"></div> /.clearfix hidden-xs
+-->
+                <div class="secondary-nav clearfix">
+                    <ul class="nav navbar-nav">
+                        <li ui-sref-active="active">
+                            <a ui-sref="App.UsersInitiative">Initiatives</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="App.MyInitiative.Dashboard">My Initiatives</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.nav secondary-nav -->
+            </div>
+            <!-- /#menu -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.navbar -->
+</header>
+<div ui-view>
+ 
+</div>
+
+<footer>
+    <div class="container-fluid">
+        <p>
+            <a href="">&copy; 2016 www.omniseq.com</a>
+        </p>
+    </div>
+</footer>
