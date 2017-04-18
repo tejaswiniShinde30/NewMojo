@@ -8,6 +8,7 @@
     userInitiativesController.$inject = ['$scope', '$state', 'UserResource', 'API', 'CONFIG', '$http'];
 
     function userInitiativesController($scope, $state, UserResource, API, CONFIG, $http) {
+        self.tracker = false;
 
         var userInitiativesCtrl = this;
         userInitiativesCtrl.displayed = [];
@@ -15,8 +16,6 @@
 
 
         function callServer(tableState) {
-
-            debugger
             userInitiativesCtrl.stState = tableState;
             userInitiativesCtrl.isLoading = true;
             userInitiativesCtrl.noRecords = false;
@@ -26,18 +25,22 @@
 
             UserResource.getPage(start, number, tableState).then(function (result) {
                 userInitiativesCtrl.displayed = result.data;
-                debugger
                 if (userInitiativesCtrl.displayed.length) {
-                    debugger
                     tableState.pagination.numberOfPages = result.numberOfPages;
                     userInitiativesCtrl.isLoading = false;
                 } else {
-                    debugger
                     userInitiativesCtrl.noRecords = true;
                     userInitiativesCtrl.isLoading = false;
                 }
             });
         }
+        
+        self.followTracker = function() {
+            self.tracker = true;
+        };
+        
+        
+        
 
     }
 

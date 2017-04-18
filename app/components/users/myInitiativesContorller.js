@@ -15,8 +15,6 @@
 
 
         function callServer(tableState) {
-
-            debugger
             myInitiativesCtrl.stState = tableState;
             myInitiativesCtrl.isLoading = true;
             myInitiativesCtrl.noRecords = false;
@@ -26,13 +24,10 @@
 
             UserResource.getPage(start, number, tableState).then(function (result) {
                 myInitiativesCtrl.displayed = result.data;
-                debugger
                 if (myInitiativesCtrl.displayed.length) {
-                    debugger
                     tableState.pagination.numberOfPages = result.numberOfPages;
                     myInitiativesCtrl.isLoading = false;
                 } else {
-                    debugger
                     myInitiativesCtrl.noRecords = true;
                     myInitiativesCtrl.isLoading = false;
                 }

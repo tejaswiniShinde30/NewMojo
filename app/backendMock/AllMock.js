@@ -8,51 +8,70 @@
         var token = {
             'jwt_token': 'thisiisdummytoken'
         };
-
+        var users = [{
+            "id": 1,
+            "role": "user",
+            "firstName": "Jon",
+            "lastName": "Taylor",
+            "username":"jon@rocketmail.com",
+            "password": "jon",
+            "initiativesFollowed":[]
+            },
+                      {
+            "id": 2,
+            "role": "user",
+            "firstName": "Micky",
+            "lastName": "Crasta",
+            "username":"mickyc@hotmail.com",
+            "password": "micky",
+            "initiativesFollowed":[]
+            },
+                      {
+            "id": 3,
+            "role": "user",
+            "firstName": "Sunil",
+            "lastName": "Jadhav",
+            "username":"sunilj@melinator.com",
+            "password": "sunil",
+            "initiativesFollowed":[]
+            }          
+        ];
         console.log("http backend called");
         $httpBackend.whenPOST(API.login).respond(function(method, url, data) {
-            debugger;
+            var authenticatedUser = {};
             var param = JSON.parse(data);
+            var authenticationFlag = false;
             var token = {
 
                 Authorization: "Bearer dummytoken123"
 
             }
-            if (param.username == "jon@melinator.com" && param.password == "jon@123") {
-                return [200, "", token];
+            angular.forEach(users, function(user, key) {
+                console.log(key + ': ' + user);
+                if (param.username == user.username && param.password == user.password) {
+                    authenticatedUser = angular.copy(user);
+                    authenticationFlag = true;
+                    debugger
+                   return [200, "", token,authenticatedUser];
+                    
             } else {
-                return [401, "", token];
+               
+                 authenticationFlag = false;
+                debugger
             }
+            });
+            
+            
+            
+            if(!authenticationFlag){
+                debugger
+             return [401, "", token,authenticatedUser];
+                
+            }
+        
+            
         });
-
-
-        var user = {
-            "id": 123,
-            "role": "ordering provider",
-            "firstName": "abc",
-            "lastName": "xyz",
-            "npi": "",
-            "facility": [{
-                "id": 1,
-                "name": "facility1",
-                "shortName": "f1"
-            }, {
-                "id": 2,
-                "name": "facility2",
-                "shortName": "f2"
-            }],
-            "email": "demo@gmail.com",
-            "address": {
-                "addressLine1": "address1",
-                "addressLine2": "address2",
-                "city": "city",
-                "state": "state",
-                "zipCode": "zipcode"
-            },
-            "phone": "9094023949",
-            "fax": "894182989199"
-        };
-        $httpBackend.whenGET(API.userDetails).respond(user);
+        //$httpBackend.whenGET(API.userDetails).respond(user);
 
 
         // Passthrough everything

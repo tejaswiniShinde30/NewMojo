@@ -21,7 +21,7 @@
                         self.isSigningIn = false;
                         libFactory.progressBar.complete();
                        /* $state.go("App.dashboard");*/
-                        $state.go("App");
+                        $state.go("App.UsersInitiative");
                     }, function error() {
                         debugger;
                         libFactory.progressBar.complete();

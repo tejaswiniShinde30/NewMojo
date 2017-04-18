@@ -1,11 +1,12 @@
 <link rel="stylesheet" href="styles/css/main.min.css">
-<header>
+<header >
     <div class="navbar primary-nav" ng-init="navbarCollapsed=false">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="navbar-header row">
                 <div class="navbar-brand">
-                    <img src="images/omniseq.png" alt="" class="img-responsive"/>
+                    <img src="images/logo.png" alt="" class="img-responsive"/>
                 </div>
+                <div>User Initiatives</div>
                 <!-- /.navbar-brand -->
                 <button data-toggle="collapse" data-target="#menu" class="navbar-toggle burger-button {{!navbarCollapsed? 'showMenu' : ''}}" ng-click="navbarCollapsed=!navbarCollapsed">
                     <span class="icon-bar"></span>
@@ -47,7 +48,7 @@
 -->
                 <div class="secondary-nav clearfix">
                     <ul class="nav navbar-nav">
-                        <li ui-sref-active="active">
+                        <li ui-sref-active="active" >
                             <a ui-sref="App.UsersInitiative">Initiatives</a>
                         </li>
                         <li ui-sref-active="active">
@@ -70,7 +71,7 @@
 <footer>
     <div class="container-fluid">
         <p>
-            <a href="">&copy; 2016 www.omniseq.com</a>
+            <a href="">&copy; 2017 www.userinitiatives.com</a>
         </p>
     </div>
 </footer>

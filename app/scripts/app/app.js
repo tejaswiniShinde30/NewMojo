@@ -29,17 +29,17 @@
 
             })
             .state('App.MyInitiative.AddNewInitiative.Basic', {
-                url: '/basic',
+                url: '/basic/:title/:desc',
                 templateUrl: '/components/users/basic.html',
 
             })
             .state('App.MyInitiative.AddNewInitiative.Advanced', {
-                url: '/advanced',
+                url: '/advanced/:title/:desc',
                 templateUrl: '/components/users/advanced.html',
 
             })
             .state('App.MyInitiative.AddNewInitiative.Preview', {
-                url: '/preview',
+                url: '/preview/:title/:desc',
                 templateUrl: '/components/users/preview.html',
 
             })

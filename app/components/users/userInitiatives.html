@@ -17,12 +17,12 @@
                         </thead>
                         <tbody>
                             <tbody ng-show="!ctrl.isLoading">
-                                <tr ng-repeat="row in ctrl.displayed">
+                                <tr ng-repeat="row in ctrl.displayed" class = "center">
                                     <td>{{row.title}}</td>
                                     <td> {{row.desc}}</td>
                                     <td><a class="hand-pointer">{{row.img}}</a></td>
                                     <td>{{row.noOfUsersFollowing}}</td>
-                                    <td><a class="hand-pointer">Follow</a></td>
+                                    <td><a class="hand-pointer btn btn-success btn-xs" ng-hide="{{ctrl.tracker}}" ng-click = "followTracker()">Follow</a><a class="hand-pointer btn btn-success" ng-show="{{ctrl.tracker}}" ng-click = "followTracker()">Un Follow</a></td>
                                 </tr>
                             </tbody>
                             <tbody ng-show="ctrl.isLoading">

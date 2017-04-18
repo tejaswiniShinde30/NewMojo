@@ -7,6 +7,7 @@
     function UserResource($q, $filter, $timeout) {
 
         var randomsItems = [];
+        var backUnabled = false;
 
         function createRandomItem(id) {
             var title = ['Batman', 'Superman', 'Robin', 'Thor', 'Hulk', 'Niki Larson', 'Stark', 'Bob Leponge'];
@@ -54,7 +55,7 @@
         }
 
         return {
-            getPage: getPage
+            getPage: getPage,
         };
     }
 
