@@ -1,8 +1,8 @@
-(function() {
+(function () {
     var services = angular.module("common.services");
-    services.factory("authenticationFactory", ['$injector', 'loginResource', 'libFactory', '$rootScope', '$q','CONFIG','AUTH', authenticationService]);
+    services.factory("authenticationFactory", ['$injector', 'loginResource', 'libFactory', '$rootScope', 'authTokenFactory', authenticationService]);
 
-    function authenticationService($injector, loginResource, libFactory, $rootScope) {
+    function authenticationService($injector, loginResource, libFactory, $rootScope, authTokenFactory) {
 
 
         function login(username, password) {
@@ -12,7 +12,8 @@
                 password: password
             }, function success(response, headers) {
                 debugger
-               
+                authTokenFactory.setUserDetails(response[0].toJSON());
+
             }, function error(response) {
                 debugger
             }).$promise;
@@ -21,10 +22,8 @@
         function logout() {
             try {
                 authTokenFactory.reset();
-                $rootScope.$broadcast(AUTH.authEvent.logoutSuccess);
-            } catch (error) {
-                $rootScope.$broadcast(AUTH.authEvent.logoutFailed);
-            }
+
+            } catch (error) {}
 
         }
 
@@ -63,7 +62,7 @@
             try {
                 var userRole = getUserAuthorizedRole();
                 if (userRole) {
-                    isAuthorized = authorizedRoles.some(function(role) {
+                    isAuthorized = authorizedRoles.some(function (role) {
                         return role.toLowerCase() == userRole.toLowerCase();
                     });
 

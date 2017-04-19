@@ -9,7 +9,7 @@ module.exports = function(grunt) {
                         'custom_modules/angular-notify/angular-notify.min.js', 'node_modules/angular-smart-table/dist/smart-table.js', 'node_modules/angular-sanitize/angular-sanitize.js', 'node_modules/angular-ui-mask/dist/mask.min.js', 'custom_modules/ngProgress/ngprogress.min.js', 'custom_modules/base64/angular-base64.min.js', 'node_modules/angular-md5/angular-md5.min.js'
                     ],
                     'app/scripts/script.min.js': ['app/scripts/config/config.js', 'app/common/services/common.services.js', 'app/common/services/*.js', 'app/common/directive/*.js', 'app/scripts/app/*.js', 'app/scripts/controllers/*.js', 'app/scripts/login/*.js',
-                        'app/common/filters/*.js', 'app/common/error/*.js','app/backendMock/*.js','app/components/users/*.js'
+                        'app/common/filters/*.js', 'app/common/error/*.js','app/backendMock/*.js','app/components/users/*.js','app/components/administrator/*.js'
                     ]
                 },
                 options: {

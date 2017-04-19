@@ -47,6 +47,16 @@
                 url: '/dashboard',
                 templateUrl: '/components/users/myInitiatives.html'
 
+            })  
+            .state('App.AllInitiative', {
+                url: '/allInitiative',
+                templateUrl: '/components/administrator/initiatives.html',
+
+            })
+             .state('App.Users', {
+                url: '/users',
+                templateUrl: '/components/administrator/users.html',
+
             });
 
         $qProvider.errorOnUnhandledRejections(false);
