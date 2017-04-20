@@ -9,6 +9,9 @@
             <div class="failedLogin" ng-if="LoginCtrl.loginFailed">
                 <span class="glyphicon glyphicon glyphicon-exclamation-sign"></span><span class="message">The email address or password you entered is not valid</span>
             </div>
+            <div class="failedLogin" ng-if="LoginCtrl.blockedUser">
+                <span class="glyphicon glyphicon glyphicon-exclamation-sign"></span><span class="message">Administartor has blocked you</span>
+            </div>
             <!-- /.failedLogin -->
             <form name="loginForm" id="loginForm" novalidate="" ng-submit="LoginCtrl.login()">
                 <div class="form-group" ng-class="{'has-error':(loginForm.username.$touched  && loginForm.username.$invalid) ,'has-success':(loginForm.username.$dirty && loginForm.username.$valid) }"><input type="email" id="username" class="form-control" name="username" ng-model="LoginCtrl.credentials.username" required />

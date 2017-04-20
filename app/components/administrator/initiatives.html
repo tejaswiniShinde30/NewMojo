@@ -9,6 +9,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th st-sort="id">Sr No.</th>
                                 <th st-sort="title">Title</th>
                                 <th st-sort="desc">Description</th>
                                 <th>Image of the initiative</th>
@@ -19,11 +20,12 @@
                         <tbody>
                             <tbody ng-show="!ctrl.isLoading">
                                 <tr ng-repeat="row in ctrl.displayed">
+                                    <td>{{row.id}}</td>
                                     <td>{{row.title}}</td>
                                     <td> {{row.desc}}</td>
                                     <td><a class="hand-pointer">{{row.img}}</a></td>
                                     <td>{{row.noOfUsersFollowing}}</td>
-                                    <td><a class="hand-pointer btn btn-warning btn-xs">Delete</a></td>
+                                    <td><button ng-class="row.isDeleted=='Deleted' ? 'hand-pointer btn btn-success btn-xs' : 'hand-pointer btn btn-warning btn-xs'" ng-click="ctrl.deleteInitiative(row.id)">{{row.isDeleted}}</button></td>
                                 </tr>
                             </tbody>
                             <tbody ng-show="ctrl.isLoading">

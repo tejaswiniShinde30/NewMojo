@@ -5,9 +5,8 @@
         "logoutSuccess": "Logout Success",
         "logoutFailed": "Logout Failed",
         "notAuthorized": "Unauthorized Access",
-        "somethingWrong":"Something Went Wrong",
-        "notAuthenticated":"Please Log In ",
-        "createUserSuccess" : "User Creation Successful"
+        "somethingWrong": "Something Went Wrong",
+        "notAuthenticated": "Please Log In "
 
     },
     "state": {

@@ -5,42 +5,58 @@
     angular.module('omniseq')
         .controller('usersController', usersController);
 
-    usersController.$inject = ['$scope', '$state', 'UserResource', 'API', 'CONFIG', '$http'];
+    usersController.$inject = ['$scope', '$state', 'UserResource'];
 
-    function usersController($scope, $state, UserResource, API, CONFIG, $http) {
-        self.tracker = false;
+    function usersController($scope, $state, UserResource) {
 
         var usersCtrl = this;
         usersCtrl.displayed = [];
-        usersCtrl.callServer = callServer;
 
-
-        function callServer(tableState) {
+        usersCtrl.callServer = function callServer(tableState) {
             usersCtrl.stState = tableState;
             usersCtrl.isLoading = true;
             usersCtrl.noRecords = false;
             var pagination = tableState.pagination;
             var start = pagination.start || 0;
             var number = pagination.number || 10;
+            usersCtrl.stState.sort.predicate = "id";
+            
+            UserResource.userList.getUsers({
+                start: start,
+                number: number,
+                tableState: tableState
+            }, function success(response, headers) {
 
-            UserResource.getPage(start, number, tableState).then(function (result) {
-                usersCtrl.displayed = result.data;
+                usersCtrl.displayed = response[0].data;
                 if (usersCtrl.displayed.length) {
-                    tableState.pagination.numberOfPages = result.numberOfPages;
+                    tableState.pagination.numberOfPages = response[0].numberOfPages;
                     usersCtrl.isLoading = false;
+                    usersCtrl.noRecords = false;
                 } else {
+                    debugger
                     usersCtrl.noRecords = true;
                     usersCtrl.isLoading = false;
                 }
-            });
+
+            }, function error(response) {
+
+            })
+
         }
-        
-        self.followTracker = function() {
-            self.tracker = true;
-        };
-        
-        
-        
+
+        usersCtrl.adminAction = function (id) {
+
+            UserResource.adminAction.updateAction({
+                id: id
+            }, function success(response) {
+                usersCtrl.callServer(usersCtrl.stState);
+
+            }, function error(response) {
+                debugger
+            })
+
+        }
+
 
     }
 

@@ -28,18 +28,18 @@
                 templateUrl: '/components/users/addNewInitiative.html'
 
             })
-            .state('App.MyInitiative.AddNewInitiative.Basic', {
-                url: '/basic/:title/:desc',
+             .state('App.MyInitiative.AddNewInitiative.Basic', {
+                url: '/basic/:title/:desc/:img',
                 templateUrl: '/components/users/basic.html',
 
             })
             .state('App.MyInitiative.AddNewInitiative.Advanced', {
-                url: '/advanced/:title/:desc',
+                url: '/advanced/:title/:desc/:img',
                 templateUrl: '/components/users/advanced.html',
 
             })
             .state('App.MyInitiative.AddNewInitiative.Preview', {
-                url: '/preview/:title/:desc',
+                url: '/preview/:title/:desc/:img',
                 templateUrl: '/components/users/preview.html',
 
             })
@@ -47,13 +47,13 @@
                 url: '/dashboard',
                 templateUrl: '/components/users/myInitiatives.html'
 
-            })  
+            })
             .state('App.AllInitiative', {
                 url: '/allInitiative',
                 templateUrl: '/components/administrator/initiatives.html',
 
             })
-             .state('App.Users', {
+            .state('App.Users', {
                 url: '/users',
                 templateUrl: '/components/administrator/users.html',
 

@@ -11,16 +11,17 @@
         debugger
         var self = this;
         self.login = login;
-        self.user = authTokenFactory.getUserDetails();
 
         function login() {
             debugger
             self.isSigningIn = true;
             self.loginFailed = false;
+            self.blockedUser = false;
             libFactory.progressBar.start();
-            authenticationFactory.login(self.credentials.username, self.credentials.password).then(function success() {
+            authenticationFactory.login(self.credentials.username, self.credentials.password).then(function success(response) {
                 self.isSigningIn = false;
-                 debugger
+                self.user = authTokenFactory.getUserDetails();
+                debugger
                 libFactory.progressBar.complete();
                 if (self.user.role == 'user') {
                     debugger
@@ -31,11 +32,15 @@
                 }
 
 
-            }, function error() {
+            }, function error(response) {
                 debugger;
                 libFactory.progressBar.complete();
                 self.isSigningIn = false;
-                self.loginFailed = true;
+                if (!response.data[0].authenticationFlag) {
+                    self.loginFailed = true;
+                }else if (!response.data[0].activeFlag) {
+                    self.blockedUser = true;
+                } 
             });
         }
     }

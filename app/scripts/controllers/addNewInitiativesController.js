@@ -4,11 +4,11 @@
     'use strict';
 
     angular.module('omniseq')
-        .controller('AddNewInitiativesController', AddNewInitiativesControllerFunction);
+        .controller('AddNewInitiativesController', AddNewInitiativesController);
 
-    AddNewInitiativesControllerFunction.$inject = ['$scope', '$state','UserResource'];
+    AddNewInitiativesController.$inject = ['$scope', '$state','MyInititivesResource'];
 
-    function AddNewInitiativesControllerFunction($scope, $state) {
+    function AddNewInitiativesController($scope, $state,MyInititivesResource) {
         var self = this;   
         
     }

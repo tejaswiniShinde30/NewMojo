@@ -214,12 +214,9 @@ module.exports = function(grunt) {
                 name: 'config',
                 dest: 'app/scripts/config/config.js',
                 constants: {
-                'ROLES': grunt.file.readJSON('app/scripts/config/roles.json'),
                     'AUTH': grunt.file.readJSON('app/scripts/config/auth.json'),
                     'CONFIG': grunt.file.readJSON('app/scripts/config/config.json'),
                     'NOTIFICATION': grunt.file.readJSON('app/scripts/config/notification.json'),
-                    'API': grunt.file.readJSON('app/scripts/config/api.json'),
-                    'POPUP': grunt.file.readJSON('app/scripts/config/popUp.json'),
                     'MESSAGES': grunt.file.readJSON('app/scripts/config/messages.json')
                 },
                 values: {

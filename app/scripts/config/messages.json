@@ -6,9 +6,6 @@
         "required": "This field is required",
         "minLength": "This field is too short",
         "maxLength": "This field is too long",
-        "email": "This needs to be a valid email",
-        "passwordPattern": "This is not a valid Password",
-        "match": "New Password and Confirm New Password should be same",
-        "unmatch": "Old password and New Password should not be same"
+        "email": "This needs to be a valid email"
     }
 }
